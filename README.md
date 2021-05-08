@@ -8,11 +8,12 @@ Submission for https://docs.google.com/document/d/1SdR9rQpocsH5rPTOcxr9noqHRld5N
 -   adding movies
 -   sharable links
 -   searching movies with debounce (no 'search' button)
+-   memoization
+-   notifications
 
 ### Todo
 
--   If a search result has already been nominated, disable its nominate button.
--   Display a banner when the user has 5 nominations.
--   create url service
--   notifs
+-   [x] If a search result has already been nominated, disable its nominate button.
+-   [x] Display a banner when the user has 5 nominations.
+-   [x] notifs
 -   deployment

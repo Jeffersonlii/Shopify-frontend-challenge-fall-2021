@@ -5,6 +5,9 @@ import { LightTheme, BaseProvider } from 'baseui';
 import Dashboard from './dashboard/dashboard';
 
 import { BrowserRouter as Router } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function App() {
     const engine = new Styletron();
 
@@ -14,6 +17,17 @@ function App() {
                 <BaseProvider theme={LightTheme}>
                     <Router>
                         <Dashboard></Dashboard>
+                        <ToastContainer
+                            position="bottom-right"
+                            autoClose={5000}
+                            hideProgressBar
+                            newestOnTop
+                            closeOnClick
+                            rtl={false}
+                            pauseOnFocusLoss
+                            draggable
+                            pauseOnHover
+                        />
                     </Router>
                 </BaseProvider>
             </StyletronProvider>

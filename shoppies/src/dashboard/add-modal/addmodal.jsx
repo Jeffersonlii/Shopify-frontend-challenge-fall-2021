@@ -4,18 +4,18 @@ import { Input } from 'baseui/input';
 import { useState } from 'react';
 import { getMovie } from './addmodal.service';
 import { Button } from 'baseui/button';
-import { ThemeProvider, createTheme, lightThemePrimitives } from 'baseui';
 import { useHistory, useLocation } from 'react-router-dom';
+import { StyledSpinnerNext } from 'baseui/spinner';
 
 function Addmodal(props) {
     const [value, setValue] = useState('');
     const [queriedMovies, setQueriedMovies] = useState([]);
     const [debouncingTimeout, setDebouncingTimeout] = useState(undefined);
+    const [isLoading, setIsLoading] = useState(false);
+
     const history = useHistory();
     const query = new URLSearchParams(useLocation().search);
-    const alreadyNominated = query.get('n')
-        ? JSON.parse(query.get('n'))
-        : { i: [] };
+    const alreadyNominated = query.get('n') ? JSON.parse(query.get('n')) : [];
     return (
         <Modal
             onClose={() => props.setIsOpen(false)}
@@ -32,11 +32,13 @@ function Addmodal(props) {
                     value={value}
                     onChange={(e) => {
                         setValue(e.target.value);
-
+                        setIsLoading(true);
                         clearTimeout(debouncingTimeout);
                         setDebouncingTimeout(
                             setTimeout(() => {
                                 getMovie(e.target.value).then((resp) => {
+                                    setIsLoading(false);
+
                                     if (resp.data.Response === 'True') {
                                         setQueriedMovies(resp.data.Search);
                                     } else {
@@ -49,15 +51,13 @@ function Addmodal(props) {
                     placeholder="Movie"
                     clearOnEscape
                 />
-                {queriedMovies.length !== 0 && (
-                    <div id="movies-wrap">
-                        <ThemeProvider
-                            theme={createTheme(lightThemePrimitives, {
-                                colors: {
-                                    buttonPrimaryHover: '#00FF00',
-                                },
-                            })}
-                        >
+                {isLoading ? (
+                    <div class="spin">
+                        <StyledSpinnerNext />
+                    </div>
+                ) : (
+                    queriedMovies.length !== 0 && (
+                        <div id="movies-wrap">
                             {queriedMovies
                                 .sort((a, b) => b.Year - a.Year)
                                 .map((movie, index) => {
@@ -68,23 +68,34 @@ function Addmodal(props) {
                                                 let copy = [...queriedMovies];
                                                 copy.splice(index, 1);
                                                 setQueriedMovies(copy);
-                                                alreadyNominated.i.push(
+                                                alreadyNominated.push(
                                                     movie.imdbID
                                                 );
                                                 history.push(
-                                                    `/?n=${JSON.stringify(
-                                                        alreadyNominated
-                                                    )}`
+                                                    `/?n=${JSON.stringify([
+                                                        ...new Set(
+                                                            alreadyNominated
+                                                        ),
+                                                    ])}`
                                                 );
+
+                                                if (
+                                                    alreadyNominated.length >= 5
+                                                ) {
+                                                    props.setIsOpen(false);
+                                                }
                                             }}
+                                            disabled={alreadyNominated.includes(
+                                                movie.imdbID
+                                            )}
                                         >
                                             <div>{movie.Title}</div>
                                             <div>{movie.Year}</div>
                                         </Button>
                                     );
                                 })}
-                        </ThemeProvider>
-                    </div>
+                        </div>
+                    )
                 )}
             </ModalBody>
         </Modal>
