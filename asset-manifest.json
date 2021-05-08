@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/Shopify-frontend-challenge-fall-2021/static/css/main.192a57b2.chunk.css",
+    "main.js": "/Shopify-frontend-challenge-fall-2021/static/js/main.8c2da3e1.chunk.js",
+    "main.js.map": "/Shopify-frontend-challenge-fall-2021/static/js/main.8c2da3e1.chunk.js.map",
+    "runtime-main.js": "/Shopify-frontend-challenge-fall-2021/static/js/runtime-main.f3a4b6db.js",
+    "runtime-main.js.map": "/Shopify-frontend-challenge-fall-2021/static/js/runtime-main.f3a4b6db.js.map",
+    "static/css/2.97503911.chunk.css": "/Shopify-frontend-challenge-fall-2021/static/css/2.97503911.chunk.css",
+    "static/js/2.6cf05344.chunk.js": "/Shopify-frontend-challenge-fall-2021/static/js/2.6cf05344.chunk.js",
+    "static/js/2.6cf05344.chunk.js.map": "/Shopify-frontend-challenge-fall-2021/static/js/2.6cf05344.chunk.js.map",
+    "static/js/3.7e88cafd.chunk.js": "/Shopify-frontend-challenge-fall-2021/static/js/3.7e88cafd.chunk.js",
+    "static/js/3.7e88cafd.chunk.js.map": "/Shopify-frontend-challenge-fall-2021/static/js/3.7e88cafd.chunk.js.map",
+    "index.html": "/Shopify-frontend-challenge-fall-2021/index.html",
+    "static/css/2.97503911.chunk.css.map": "/Shopify-frontend-challenge-fall-2021/static/css/2.97503911.chunk.css.map",
+    "static/css/main.192a57b2.chunk.css.map": "/Shopify-frontend-challenge-fall-2021/static/css/main.192a57b2.chunk.css.map",
+    "static/js/2.6cf05344.chunk.js.LICENSE.txt": "/Shopify-frontend-challenge-fall-2021/static/js/2.6cf05344.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f3a4b6db.js",
+    "static/css/2.97503911.chunk.css",
+    "static/js/2.6cf05344.chunk.js",
+    "static/css/main.192a57b2.chunk.css",
+    "static/js/main.8c2da3e1.chunk.js"
+  ]
+}
