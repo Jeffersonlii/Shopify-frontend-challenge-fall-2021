@@ -72,11 +72,13 @@ function Addmodal(props) {
                                                     movie.imdbID
                                                 );
                                                 history.push(
-                                                    `/?n=${JSON.stringify([
-                                                        ...new Set(
-                                                            alreadyNominated
-                                                        ),
-                                                    ])}`
+                                                    `/Shopify-frontend-challenge-fall-2021/?n=${JSON.stringify(
+                                                        [
+                                                            ...new Set(
+                                                                alreadyNominated
+                                                            ),
+                                                        ]
+                                                    )}`
                                                 );
 
                                                 if (

@@ -141,9 +141,9 @@ function Dashboard() {
                                                         1
                                                     );
                                                     history.push(
-                                                        `/?n=${JSON.stringify([
-                                                            ...new Set(n),
-                                                        ])}`
+                                                        `/Shopify-frontend-challenge-fall-2021/?n=${JSON.stringify(
+                                                            [...new Set(n)]
+                                                        )}`
                                                     );
                                                 }}
                                             >
