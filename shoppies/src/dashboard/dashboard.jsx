@@ -97,61 +97,65 @@ function Dashboard() {
                 </div>
             </div>
             <div id="items-grid">
-                <Masonry
-                    breakpointCols={{
-                        default: 4,
-                        1100: 3,
-                        700: 2,
-                        500: 1,
-                    }}
-                    className="my-masonry-grid"
-                    columnClassName="my-masonry-grid_column"
-                >
-                    {movies.map((movie, index) => {
-                        return (
-                            <div class="movie-item" key={index}>
-                                <Card
-                                    overrides={{
-                                        Root: { style: { width: '100%' } },
-                                    }}
-                                    headerImage={
-                                        movie.Poster === 'N/A'
-                                            ? 'default.jpg'
-                                            : movie.Poster
-                                    }
-                                    title={movie.Title}
-                                >
-                                    <StyledBody>{movie.Year}</StyledBody>
-                                    <StyledAction>
-                                        <Button
-                                            onClick={() => {
-                                                let params = new URLSearchParams(
-                                                    location.search
-                                                );
-                                                let n = params.get('n')
-                                                    ? JSON.parse(
-                                                          params.get('n')
-                                                      )
-                                                    : [];
-                                                n.splice(
-                                                    n.indexOf(movie.imdbID),
-                                                    1
-                                                );
-                                                history.push(
-                                                    `/?n=${JSON.stringify([
-                                                        ...new Set(n),
-                                                    ])}`
-                                                );
-                                            }}
-                                        >
-                                            Remove
-                                        </Button>
-                                    </StyledAction>
-                                </Card>
-                            </div>
-                        );
-                    })}
-                </Masonry>
+                {movies.length === 0 ? (
+                    <div id="nonebox">No Movies Nominated</div>
+                ) : (
+                    <Masonry
+                        breakpointCols={{
+                            default: 4,
+                            1100: 3,
+                            700: 2,
+                            500: 1,
+                        }}
+                        className="my-masonry-grid"
+                        columnClassName="my-masonry-grid_column"
+                    >
+                        {movies.map((movie, index) => {
+                            return (
+                                <div class="movie-item" key={index}>
+                                    <Card
+                                        overrides={{
+                                            Root: { style: { width: '100%' } },
+                                        }}
+                                        headerImage={
+                                            movie.Poster === 'N/A'
+                                                ? 'default.jpg'
+                                                : movie.Poster
+                                        }
+                                        title={movie.Title}
+                                    >
+                                        <StyledBody>{movie.Year}</StyledBody>
+                                        <StyledAction>
+                                            <Button
+                                                onClick={() => {
+                                                    let params = new URLSearchParams(
+                                                        location.search
+                                                    );
+                                                    let n = params.get('n')
+                                                        ? JSON.parse(
+                                                              params.get('n')
+                                                          )
+                                                        : [];
+                                                    n.splice(
+                                                        n.indexOf(movie.imdbID),
+                                                        1
+                                                    );
+                                                    history.push(
+                                                        `/?n=${JSON.stringify([
+                                                            ...new Set(n),
+                                                        ])}`
+                                                    );
+                                                }}
+                                            >
+                                                Remove
+                                            </Button>
+                                        </StyledAction>
+                                    </Card>
+                                </div>
+                            );
+                        })}
+                    </Masonry>
+                )}
             </div>
 
             <Addmodal isOpen={isOpen} setIsOpen={setIsOpen}></Addmodal>
