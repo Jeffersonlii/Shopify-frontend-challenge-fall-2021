@@ -1,0 +1,16 @@
+#movies-wrap {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    Button {
+        margin-bottom: 0.5rem;
+        &:last-child {
+            margin-bottom: 0rem;
+        }
+
+        display: flex;
+        justify-content: space-between;
+    }
+    overflow-y: auto;
+    max-height: 30vh;
+}
